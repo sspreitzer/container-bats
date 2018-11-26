@@ -1,6 +1,9 @@
 FROM centos:7
 
-RUN yum install -y git && \
+RUN yum install -y centos-release-openshift-origin && \
+    yum install -y origin-clients \
+                   git \
+    && \
     rm -rf /var/cache/yum && \
     curl -L -o /tmp/webhook.tar.gz https://github.com/adnanh/webhook/releases/download/2.6.9/webhook-linux-amd64.tar.gz && \
     tar xzf /tmp/webhook.tar.gz -C /tmp && \
