@@ -15,11 +15,8 @@ RUN yum install -y centos-release-openshift-origin && \
     useradd -m bats
 
 EXPOSE 8080
-VOLUME "/etc/webhook" "/etc/bats"
-
+VOLUME "/etc/webhook"
 USER bats
-VOLUME "/home/bats"
-WORKDIR "/home/bats"
 
 ENTRYPOINT [ "/usr/bin/webhook" ]
 CMD [ "-port", "8080", "-nopanic", "-verbose", "-hooks", "/etc/webhook/hooks.json" ]
